@@ -1,7 +1,5 @@
 {
-    "extends": ["airbnb", "prettier"],
-    "rules": {
-        "prettier/prettier": ["error"]
-    },
+    "extends": ["airbnb", "eslint-config-prettier"],
+    "plugins": ["eslint-plugin-prettier"],
     "root": true
 }

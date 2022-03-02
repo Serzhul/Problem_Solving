@@ -1,4 +1,4 @@
-const solution = (numbers, hand) => {
+function solution(numbers, hand) {
     let leftCur = 10;
     let rightCur = 12;
 
@@ -45,6 +45,6 @@ const solution = (numbers, hand) => {
     }
 
     return answer.join('');
-};
+}
 
 solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], 'right');
