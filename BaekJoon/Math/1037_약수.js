@@ -1,15 +1,14 @@
 const solution = (input) => {
-  const [number, divisors] = require("fs")
-    .readFileSync("/dev/stdin")
-    .toString()
-    .trim()
-    .split("\n")
-    .map((input, i) => (i === 0 ? +input : input.split(" ").map(Number)));
+    const [number, divisors] = input
+        .toString()
+        .trim()
+        .split('\n')
+        .map((input, i) => (i === 0 ? +input : input.split(' ').map(Number)));
 
-  divisors.sort((a, b) => a - b);
+    divisors.sort((a, b) => a - b);
 
-  console.log(divisors[0] * divisors[number - 1]);
-  return N + "";
+    console.log(divisors[0] * divisors[number - 1]);
+    return N + '';
 };
 solution(`
 2 4 5 10 20
