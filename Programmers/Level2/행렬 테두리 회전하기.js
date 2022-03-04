@@ -38,7 +38,6 @@ function solution(rows, columns, queries) {
         mins.push(min);
     });
 
-    console.log(mins);
     return mins;
 }
 
