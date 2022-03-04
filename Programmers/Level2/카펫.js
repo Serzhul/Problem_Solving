@@ -1,15 +1,20 @@
-function solution(brown, yellow) {
-    const total = brown + yellow;
+function solution(people, limit) {
+    const len = people.length;
+    if (len === 1) return 1;
+    people.sort((a, b) => a - b);
 
-    for (let height = 3; height <= brown; height += 1) {
-        if (total % height === 0) {
-            const width = total / height;
+    let cur = 0;
+    let count = 0;
 
-            if ((height - 2) * (width - 2) === yellow) {
-                return [width, height];
-            }
+    for (let i = len - 1; i >= 0; i -= 1) {
+        if (people[i] + people[cur] <= limit) {
+            cur += 1;
+            count += 1;
+        } else {
+            count += 1;
         }
+        if (cur >= i) break;
     }
-    return null;
+    return count;
 }
-solution(24, 24);
+solution([70, 50, 80, 50], 100);
