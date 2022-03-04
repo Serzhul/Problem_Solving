@@ -13,7 +13,7 @@ function solution(s) {
             }
         }
     }
-    return stack.length >= 1 ? 1 : 0;
+    return stack.length >= 1 ? 0 : 1;
 }
 
 solution('baabaa');
