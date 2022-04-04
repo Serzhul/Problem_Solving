@@ -13,7 +13,7 @@ function solution(n, a, b) {
     answer += 1;
   }
 
-  console.log(answer);
+  return answer
 }
 
 solution(8, 4, 7);
