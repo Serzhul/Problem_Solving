@@ -20,6 +20,7 @@ function solution(n, words) {
         used.push(words[i]);
     }
 
+    
     return [0, 0];
 }
 
