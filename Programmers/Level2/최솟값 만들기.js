@@ -1,22 +1,14 @@
 function solution(A, B) {
-    let acc = 0;
-    let acc2 = 0;
+  A.sort((a, b) => a - b);
+  B.sort((a, b) => b - a);
 
-    A.sort();
-    B.sort().reverse();
+  let answer = 0;
 
-    for (let i = 0; i < A.length; i += 1) {
-        acc += A[i] * B[i];
-    }
+  for (let i = 0; i < A.length; i += 1) {
+    answer += A[i] * B[i];
+  }
 
-    A.reverse();
-    B.reverse();
-
-    for (let i = 0; i < A.length; i += 1) {
-        acc2 += A[i] * B[i];
-    }
-
-    return Math.min(acc, acc2);
+  return answer;
 }
 
 solution([1, 4, 2], [5, 4, 4]);
