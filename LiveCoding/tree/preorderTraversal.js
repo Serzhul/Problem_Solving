@@ -23,3 +23,39 @@ function preorderTraversal(root) {
     traverse(current);
     return data;
 }
+
+// Solution2 : 재귀 호출 사용하지 않고 프리오더 종주하기 => 스택 사용
+
+/** 의사 코드
+ * 1. 스택을 만든다.
+ * 2. 루트 노드를 스택에 집어 넣는다.
+ * 3. 스택이 비어있지 않은 동안
+ *  - 노드를 하나 꺼낸다.
+ *  - 값을 담는다.
+ *  - 오른쪽 자식이 있다면 오른쪽 자식을 스택에 넣는다.
+ *  - 왼쪽 자식이 있다면 왼쪽 자식을 스택에 넣는다.
+ */
+function preorderTraversalWithoutRecursion(root) {
+    const data = [];
+    const stack = [];
+
+    if (root === null) return [];
+
+    stack.push(root);
+
+    while (stack.length) {
+        const node = stack.pop();
+
+        data.push(node.val);
+
+        if (node.right !== null) {
+            stack.push(node.right);
+        }
+
+        if (node.left !== null) {
+            stack.push(node.left);
+        }
+    }
+
+    return data;
+}
