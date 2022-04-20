@@ -25,15 +25,23 @@
 // solution2
 
 function maxSubArray(nums) {
-  let currentSum = -Infinity;
-  let maxSum = -Infinity;
+  if (nums.length === 1) return nums[0];
+
+  let sum = 0;
+
+  let answer = Number.MIN_SAFE_INTEGER;
 
   for (let i = 0; i < nums.length; i += 1) {
-    currentSum = Math.max(currentSum, 0);
-    currentSum += nums[i];
-    maxSum = Math.max(maxSum, currentSum);
+    if (nums[i] >= 0) {
+      sum += nums[i];
+    } else {
+      sum = nums[i];
+    }
+
+    answer = Math.max(answer, sum);
   }
-  return maxSum;
+
+  return answer;
 }
 
 maxSubArray([1, 2, 3]);
