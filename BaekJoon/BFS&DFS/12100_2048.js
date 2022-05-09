@@ -38,12 +38,12 @@ const solution = (input) => {
   };
 
   const dfs = (N, b, count) => {
-    let ret = Math.max(...b.map((n) => Math.max(...n)));
+    let ret = Math.max(...b.map((n) => Math.max(...n))); // 2차원 배열 순회하면서 최댓값 구하기
 
     if (count === 0) return ret;
 
     for (let i = 0; i < 4; i += 1) {
-      const X = b.map((x) => convert(x, N));
+      const X = b.map((x) => convert(x, N)); // 같은 숫자면 합치고 빈 칸을 0으로 채우는 로직
 
       if (!arraysEqual(X, b)) {
         ret = Math.max(ret, dfs(N, X, count - 1));
