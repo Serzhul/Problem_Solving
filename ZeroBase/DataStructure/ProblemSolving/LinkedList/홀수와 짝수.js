@@ -34,7 +34,7 @@ class LinkedList {
 
 // 하나의 Array가 있을 때, 해당 리스트를 홀수 와 짝수로 분리하기
 
-// Sol1 : 직접 구현
+// Sol
 
 const arr = [1, 2, 3, 4, 5, 6, 7];
 
