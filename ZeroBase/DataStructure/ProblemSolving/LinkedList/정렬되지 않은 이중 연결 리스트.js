@@ -30,7 +30,7 @@ class DoubleLinkedList {
   }
 
   sort() {
-    // 뒤에서 부터 작은값을 앞으로 SWAP 하는 방식으로
+    // 뒤에서 부터 작은값을 앞으로 swap 하는 방식으로
     let isSorted;
 
     do {
