@@ -19,6 +19,7 @@ const multiply = function (num1, num2) {
       const p1 = i + j;
       const p2 = i + j + 1;
       const sum = res[p2] + Number(num1[i]) * Number(num2[j]);
+
       res[p2] = sum % 10;
       res[p1] += Math.floor(sum / 10);
     }
