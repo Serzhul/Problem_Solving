@@ -36,8 +36,30 @@ const backspaceCompare = (s, t) => {
     }
   });
 
-  console.log(s1, s2);
   return s1.join("") === s2.join("");
 };
 
 console.log(backspaceCompare(s, t));
+
+// Other Solution
+
+// const backspaceCompare = (S, T) => {
+//   return edit(S) === edit(T);
+
+//   function edit(str) {
+//     let result = "";
+//     let backspaces = 0;
+
+//     for (let i = str.length - 1; i >= 0; i -= 1) {
+//       if (str[i] === "#") {
+//         backspaces += 1;
+//       } else if (backspaces > 0) {
+//         backspaces -= 1;
+//       } else {
+//         result = str[i] + result;
+//       }
+//     }
+
+//     return result;
+//   }
+// };
