@@ -4,42 +4,48 @@
  * @return {number[]}
  */
 
-// const s = "cbaebabacd";
-// const p = "abc";
+const s = "cbaebabacd";
+const p = "abc";
 
-const s = "baa";
-const p = "aa";
+// const s = "baa";
+// const p = "aa";
 
-const findAnagrams = (a, b) => {
-  const output = [];
+const findAnagrams = (s, p) => {
   const charMap = {};
 
-  [...b].forEach((char) => {
+  [...p].forEach((char) => {
     charMap[char] = charMap[char] + 1 || 1;
   });
 
   let left = 0;
   let right = 0;
+  let count = p.length;
 
-  let count = b.length;
+  const res = [];
 
-  while (right < a.length) {
-    if (charMap[a[right]] > 0) count -= 1;
+  while (right < s.length) {
+    const windowRight = s[right];
+    const windowLeft = s[left];
 
-    charMap[a[right]] -= 1;
+    // console.log(
+    //   `left: ${left}, right: ${right}, windowLeft: ${windowLeft}, windowRight: ${windowRight}`
+    // );
+
+    if (charMap[windowRight] > 0) count -= 1;
+
+    charMap[windowRight] -= 1;
     right += 1;
 
-    if (count === 0) output.push(left);
+    if (count === 0) res.push(left);
 
-    if (right - left === b.length) {
-      if (charMap[a[left]] >= 0) count += 1;
-
-      charMap[a[left]] += 1;
+    if (right - left === p.length) {
+      if (charMap[windowLeft] >= 0) count += 1;
+      charMap[windowLeft] += 1;
       left += 1;
     }
   }
 
-  return output;
+  return res;
 };
 
 console.log(findAnagrams(s, p));
