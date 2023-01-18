@@ -7,9 +7,10 @@ class UnionFind {
   }
 
   find(u) {
-    if (u === this.parent[u][0]) return u;
+    if (u !== this.parent[u][0])
+      this.parent[u][0] = this.find(this.parent[u][0]);
 
-    return (this.parent[u][0] = this.find(this.parent[u][0]));
+    return this.parent[u][0];
   }
 
   merge(u, v) {
