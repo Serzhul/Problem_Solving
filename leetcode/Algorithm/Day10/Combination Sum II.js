@@ -26,11 +26,6 @@ const combinationSum2 = (candidates, target) => {
         comb.push(candidates[i]);
         checked[i] = true;
         getComb(i, comb, sum);
-        // if (sum + candidates[i] <= target) {
-        //   getComb(i, comb, sum);
-        // } else if (sum + candidates[i] > target) {
-        //   getComb(i + 1, comb, sum);
-        // }
         sum -= candidates[i];
         comb.pop();
         checked[i] = false;
