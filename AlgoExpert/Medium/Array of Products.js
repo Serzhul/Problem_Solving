@@ -9,6 +9,7 @@ function arrayOfProducts(array) {
   const rightArr = Array.from({ length: len }, () => 1);
 
   let products = 1;
+
   for (let i = 0; i < len; i += 1) {
     const cur = array[i];
 
