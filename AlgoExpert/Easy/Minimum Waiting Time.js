@@ -6,9 +6,7 @@ function minimumWaitingTime(queries) {
   let total = 0;
   let lastSum = 0;
 
-  console.log(queries);
   for (let i = 0; i < queries.length - 1; i += 1) {
-    console.log(lastSum, total, queries[i]);
     if (i === 0) lastSum = queries[i];
     else lastSum += queries[i];
     total += lastSum;
