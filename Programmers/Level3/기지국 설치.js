@@ -4,16 +4,25 @@ const W = 2;
 
 function solution(n, stations, w) {
   let count = 0;
-  let startIdx = 0;
+  const range = 2 * w + 1;
+  let from = 1;
 
-  for (let i = 0; i < stations.length; i += 1) {
-    const toReachIdx = stations[i] - w - 1;
+  stations.forEach((station) => {
+    const to = station - w;
+    if (to > from) {
+      const countRange = to - from;
+      count += Math.ceil(countRange / range);
+    }
 
-    count += Math.ceil((toReachIdx - startIdx) / (2 * w + 1));
-    startIdx = stations[i] + w;
+    from = station + w + 1;
+  });
+
+  if (from <= n) {
+    const to = n + 1;
+    const countRange = to - from;
+    count += Math.ceil(countRange / range);
   }
 
-  count += Math.ceil((n - startIdx) / (2 * w + 1));
   return count;
 }
 
