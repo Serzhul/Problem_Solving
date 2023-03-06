@@ -6,8 +6,12 @@ function getHasCycle(nodeList, targetNode) {
 
   while (queue.length) {
     const curNode = queue.shift();
+
+    // Cycle이 발생한 경우
     if (nodeList[curNode].includes(targetNode)) return true;
+
     visitedNodes[curNode] = true;
+
     nodeList[curNode].forEach((edge) => {
       if (!(edge in visitedNodes)) {
         queue.push(edge);
