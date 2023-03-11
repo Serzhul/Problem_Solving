@@ -11,7 +11,7 @@ class MergeSort {
     return this.merge(this.sort(left), this.sort(right));
   }
 
-  merge(left, right) {
+  static merge(left, right) {
     const sortedArr = [];
 
     while (left.length && right.length) {
