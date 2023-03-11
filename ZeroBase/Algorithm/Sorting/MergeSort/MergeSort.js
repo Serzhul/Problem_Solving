@@ -1,12 +1,12 @@
 class MergeSort {
-  sort(data) {
+  sort(arr) {
     // 배열의 길이가 1이 될때까지 분할
-    if (data.length === 1) return data;
+    if (arr.length === 1) return arr;
 
-    const mid = Math.ceil(data.length / 2);
+    const mid = Math.ceil(arr.length / 2);
 
-    const left = data.slice(0, mid);
-    const right = data.slice(mid);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
 
     return this.merge(this.sort(left), this.sort(right));
   }
