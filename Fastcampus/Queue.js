@@ -25,3 +25,22 @@ class Queue {
     return this.tailIndex - this.headIndex;
   }
 }
+
+function bfs(graph, start, visited) {
+  const queue = [];
+  queue.push(start);
+
+  visited[start] = true;
+
+  while (queue.length) {
+    const cur = queue.shift();
+    console.log(cur);
+
+    for (let i = 0; i < graph.length; i += 1) {
+      if (!visited[i]) {
+        queue.push(cur);
+        visited[i] = true;
+      }
+    }
+  }
+}
