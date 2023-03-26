@@ -32,6 +32,44 @@
 //   console.log(result);
 // };
 
+// const solution = (input) => {
+//   const [N, budgets, M] = input
+//     .toString()
+//     .trim()
+//     .split("\n")
+//     .map((el, idx) => {
+//       if (idx === 1) return el.split(" ").map(Number);
+//       return Number(el);
+//     });
+
+//   let start = 1;
+//   let end = Math.max(...budgets);
+
+//   let res = 0;
+
+//   while (start <= end) {
+//     const mid = Math.floor((start + end) / 2);
+
+//     let total = 0;
+
+//     // 중간 값과 budget 사이에서 작은 값을 누적함 => 예산을 최소화하기 위해
+//     budgets.forEach((budget) => {
+//       total += Math.min(mid, budget);
+//     });
+
+//     if (total <= M) {
+//       res = mid;
+//       start = mid + 1;
+//     } else {
+//       end = mid - 1;
+//     }
+//   }
+
+//   console.log(res);
+// };
+
+// 복습
+
 const solution = (input) => {
   const [N, budgets, M] = input
     .toString()
@@ -42,32 +80,22 @@ const solution = (input) => {
       return Number(el);
     });
 
-  let start = 1;
-  let end = Math.max(...budgets);
+  let sum = 0;
+  let max = 0;
+  let total = M;
 
-  let res = 0;
-
-  while (start <= end) {
-    const mid = Math.floor((start + end) / 2);
-
-    let total = 0;
-
-    // 중간 값과 budget 사이에서 작은 값을 누적함 => 예산을 최소화하기 위해
-    budgets.forEach((budget) => {
-      total += Math.min(mid, budget);
-    });
-
-    if (total <= M) {
-      res = mid;
-      start = mid + 1;
-    } else {
-      end = mid - 1;
-    }
+  for (let i = 0; i < N; i += 1) {
+    sum += budgets[i];
+    max = Math.max(max, budgets[i]);
   }
 
-  console.log(res);
-};
+  if (sum <= total) {
+    console.log(max);
+    return;
+  }
 
+  for (let i = 0; i < N; i += 1) {}
+};
 solution(`5
 70 80 30 40 100
 450`);
