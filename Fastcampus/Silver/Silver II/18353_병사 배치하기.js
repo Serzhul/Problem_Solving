@@ -13,33 +13,6 @@ function lowerBound(arr, target) {
 
 // Solution 1 : Parametric Search
 
-// const solution = (input) => {
-//   const [N, soldiers] = input
-//     .toString()
-//     .trim()
-//     .split("\n")
-//     .map((el, idx) => {
-//       if (idx === 0) return Number(el);
-//       return el.split(" ").map(Number);
-//     });
-
-//   soldiers.reverse(); // 순서를 뒤집어서 최장 증가 부분 수열 문제로 변환
-
-//   const arr = [0];
-//   for (let i = 0; i < soldiers.length; i += 1) {
-//     const soldier = soldiers[i];
-//     if (arr[arr.length - 1] < soldier) arr.push(soldier);
-//     else {
-//       const idx = lowerBound(arr, soldier);
-//       arr[idx] = soldier;
-//     }
-//   }
-
-//   console.log(N - (arr.length - 1));
-// };
-
-// Solution ２ : Dynamic Programming
-
 const solution = (input) => {
   const [N, soldiers] = input
     .toString()
@@ -50,20 +23,75 @@ const solution = (input) => {
       return el.split(" ").map(Number);
     });
 
-  const dp = Array.from({ length: N }, () => 1);
+  soldiers.reverse(); // 순서를 뒤집어서 최장 증가 부분 수열 문제로 변환
 
-  soldiers.reverse();
+  const arr = [0];
 
-  for (let i = 1; i < N; i += 1) {
-    for (let j = 0; j < i; j += 1) {
-      if (soldiers[j] < soldiers[i]) dp[i] = Math.max(dp[i], dp[j] + 1);
+  for (let i = 0; i < soldiers.length; i += 1) {
+    const soldier = soldiers[i];
+
+    if (arr[arr.length - 1] < soldier) arr.push(soldier);
+    else {
+      const idx = lowerBound(arr, soldier);
+      arr[idx] = soldier;
     }
   }
 
-  console.log(dp);
-
-  console.log(N - Math.max(...dp));
+  console.log(N - (arr.length - 1));
 };
+
+// Solution ２ : Dynamic Programming
+
+// const solution = (input) => {
+//   const [N, soldiers] = input
+//     .toString()
+//     .trim()
+//     .split("\n")
+//     .map((el, idx) => {
+//       if (idx === 0) return Number(el);
+//       return el.split(" ").map(Number);
+//     });
+
+//   const dp = Array.from({ length: N }, () => 1);
+
+//   soldiers.reverse();
+
+//   for (let i = 1; i < N; i += 1) {
+//     for (let j = 0; j < i; j += 1) {
+//       if (soldiers[j] < soldiers[i]) dp[i] = Math.max(dp[i], dp[j] + 1);
+//     }
+//   }
+
+//   console.log(N - Math.max(...dp));
+// };
+
+// const solution = (input) => {
+//   const [N, soldiers] = input
+//     .toString()
+//     .trim()
+//     .split("\n")
+//     .map((el, idx) => {
+//       if (idx === 0) return Number(el);
+//       return el.split(" ").map(Number);
+//     });
+
+//   soldiers.reverse();
+
+//   const dp = Array.from({ length: N }, () => 1);
+
+//   let max = 0;
+
+//   for (let i = 1; i < N; i += 1) {
+//     for (let j = 0; j < i; j += 1) {
+//       if (soldiers[j] < soldiers[i]) {
+//         dp[i] = Math.max(dp[i], dp[j] + 1);
+//         max = Math.max(max, dp[i]);
+//       }
+//     }
+//   }
+
+//   console.log(N - max);
+// };
 
 solution(`7
 15 11 4 8 5 2 4`);
