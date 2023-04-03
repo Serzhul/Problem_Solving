@@ -4,7 +4,7 @@ class MinHeap {
     this.cnt = 0;
   }
 
-  push(data) {
+  enq(data) {
     this.cnt += 1;
     this.heap[this.cnt] = data;
 
@@ -19,7 +19,7 @@ class MinHeap {
     }
   }
 
-  pop() {
+  deq() {
     if (this.cnt === 0) return null;
 
     const data = this.heap[1];
@@ -53,7 +53,7 @@ class MinHeap {
     return this.heap[this.cnt];
   }
 
-  getSize() {
+  size() {
     return this.cnt;
   }
 }
@@ -61,36 +61,38 @@ class MinHeap {
 const solution = (file) => {
   const input = file.toString().split("\n");
 
-  let INF = 1e9;
+  const INF = 1e9;
 
-  let [n, m] = input[0].split(" ").map(Number);
-  let start = Number(input[1]);
-  let graph = [];
+  const [n, m] = input[0].split(" ").map(Number);
+  const start = Number(input[1]);
+  const graph = [];
 
   for (let i = 0; i <= n + 1; i += 1) graph.push([]);
   for (let i = 2; i <= m + 1; i += 1) {
-    let [a, b, c] = input[i].split(" ").map(Number);
+    const [a, b, c] = input[i].split(" ").map(Number);
 
     graph[a].push([b, c]);
   }
 
-  let distance = new Array(n + 1).fill(INF);
+  const distance = new Array(n + 1).fill(INF);
 
   function dijkstra() {
-    let pq = new MinHeap();
+    const pq = new MinHeap();
 
-    pq.push([0, start]);
+    pq.enq([0, start]);
     distance[start] = 0;
-    while (pq.getSize() !== 0) {
-      let [dist, now] = pq.pop();
+    while (pq.size() !== 0) {
+      const [dist, now] = pq.deq();
 
       if (distance[now] < dist) continue;
 
-      for (let i of graph[now]) {
-        let cost = dist + i[1];
-        if (cost < distance[i[0]]) {
-          distance[i[0]] = cost;
-          pq.push([cost, i[0]]);
+      if (graph[now].length > 0) {
+        for (let i of graph[now]) {
+          const cost = dist + i[1];
+          if (cost < distance[i[0]]) {
+            distance[i[0]] = cost;
+            pq.enq([cost, i[0]]);
+          }
         }
       }
     }
