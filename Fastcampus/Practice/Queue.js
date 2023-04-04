@@ -21,7 +21,7 @@ export default class Queue {
     return this.items[this.headIndex];
   }
 
-  getLength() {
+  getSize() {
     return this.tailIndex - this.headIndex;
   }
 }

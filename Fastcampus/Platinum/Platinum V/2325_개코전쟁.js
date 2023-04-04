@@ -158,6 +158,8 @@ const solution = (input) => {
 
   let res = 0;
 
+  console.log(removes);
+
   for (let i = 0; i < removes.length; i += 1) {
     const [a, b] = removes[i];
 
