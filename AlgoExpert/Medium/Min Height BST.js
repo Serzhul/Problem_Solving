@@ -33,25 +33,65 @@ class BST {
   }
 }
 
-const array = [1, 2, 5, 7, 10, 13, 14, 15, 22];
+const input = [1, 2, 5, 7, 10, 13, 14, 15, 22];
+
+// function minHeightBst(array) {
+//   const constructMinHeightBst = (array, bst, startIdx, endIdx) => {
+//     if (endIdx < startIdx) return bst;
+
+//     const midIdx = Math.floor((startIdx + endIdx) / 2);
+//     const valueToAdd = array[midIdx];
+
+//     if (!bst) bst = new BST(valueToAdd);
+//     else bst.insert(valueToAdd);
+
+//     constructMinHeightBst(array, bst, startIdx, midIdx - 1);
+//     constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+
+//     return bst;
+//   };
+
+//   return constructMinHeightBst(array, null, 0, array.length - 1);
+// }
+
+// function minHeightBst(array) {
+//   const constructMinHeightBst = (array, bst, startIdx, endIdx) => {
+//     if (endIdx < startIdx) return bst;
+
+//     const midIdx = Math.floor((startIdx + endIdx) / 2);
+//     const valueToAdd = array[midIdx];
+
+//     if (!bst) bst = new BST(valueToAdd);
+//     else bst.insert(valueToAdd);
+
+//     constructMinHeightBst(array, bst, startIdx, midIdx - 1);
+//     constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+
+//     return bst;
+//   };
+
+//   return constructMinHeightBst(array, null, 0, array.length - 1);
+// }
+
+// 복습 2023.09.23
 
 function minHeightBst(array) {
-  const constructMinHeightBst = (array, bst, startIdx, endIdx) => {
+  function constructBst(arr, bst, startIdx, endIdx) {
     if (endIdx < startIdx) return bst;
 
     const midIdx = Math.floor((startIdx + endIdx) / 2);
-    const valueToAdd = array[midIdx];
+    const val = arr[midIdx];
 
-    if (!bst) bst = new BST(valueToAdd);
-    else bst.insert(valueToAdd);
+    if (!bst) bst = new BST(val);
+    else bst.insert(val);
 
-    constructMinHeightBst(array, bst, startIdx, midIdx - 1);
-    constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+    constructBst(arr, bst, startIdx, midIdx - 1);
+    constructBst(arr, bst, midIdx + 1, endIdx);
 
     return bst;
-  };
+  }
 
-  return constructMinHeightBst(array, null, 0, array.length - 1);
+  return constructBst(arr, null, 0, array.length - 1);
 }
 
-console.log(minHeightBst(array));
+console.log(minHeightBst(input));
